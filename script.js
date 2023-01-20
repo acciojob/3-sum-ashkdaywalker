@@ -1,21 +1,23 @@
 function threeSum(S, target) {
   S.sort((a,b) => a-b);
-  let closetSum = Infinity;
+  let closestSum = Infinity;
   for(let i = 0;i< S.length-2;i++){
     let left = i+1,right = S.length -1;
     while(left < right){
       let currentSum = S[i] + S[left] + S[right];
-      if(Math.abs(currentSum - target)< Math.abs(closetSum - target)){
-        closetSum = currentSum;
+      if(Math.abs(currentSum - target)< Math.abs(closestSum - target)){
+        closestSum = currentSum;
       }
       if(currentSum < target){
+        left++;
+      } else if (currentSum > target){
         right--;
-      } else{
+      }else{
         return currentSum;
       }
     }
   }
-  return closetSum;
+  return closestSum;
   //your code here
 }
 
